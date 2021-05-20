@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent()}} - Série {% endblock %}
+{% block body %}
+    <h1>Program {{ id }}</h1>
+    <form action="/programs/" method="post">
+        <input type="hidden" name="test" value="test">
+        <button>ok</button>
+    </form>
+{% endblock %}
