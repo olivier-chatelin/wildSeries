@@ -28,7 +28,7 @@ use
 Foreign Key  
 ![print screen](.readMeImages/quete7img3.png)  
 
-## Quête 7 Relation many to one
+## Quête 8 Récupération de données
 categoty controller  
 ![print screen](.readMeImages/quete8img1.png)    
   
@@ -40,5 +40,8 @@ Route categories/horreur
   
 Route categories/popoosdfpo  
 ![print screen](.readMeImages/quete8img4.png)  
+
+## Quête 9 les fixtures  
+[Lien vers la video](https://drive.google.com/file/d/1y28QER-o5KM8fPKcS2h5HzKIkxoPnUNs/view?usp=sharing)
 
 
