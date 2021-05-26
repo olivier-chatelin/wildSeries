@@ -17,3 +17,14 @@ Category
 ## Quête 5 première entité avec Doctrine
 Program
 ![print screen](.readMeImages/quete6img2.png)
+
+## Quête 7 Relation many to one
+$category et annotation  
+![print screen](.readMeImages/quete7img1.png)    
+  
+use  
+![print screen](.readMeImages/quete7img2.png)  
+  
+Foreign Key  
+![print screen](.readMeImages/quete7img3.png)
+
