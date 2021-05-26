@@ -42,6 +42,8 @@ Route categories/popoosdfpo
 ![print screen](.readMeImages/quete8img4.png)  
 
 ## Quête 9 les fixtures  
-[Lien vers la video](https://drive.google.com/file/d/1y28QER-o5KM8fPKcS2h5HzKIkxoPnUNs/view?usp=sharing)
+[Lien vers la video](https://drive.google.com/file/d/1y28QER-o5KM8fPKcS2h5HzKIkxoPnUNs/view?usp=sharing)  
 
+## Quête 10 relation bidirectionnelles  
+[Lien vers la video](https://drive.google.com/file/d/1y28QER-o5KM8fPKcS2h5HzKIkxoPnUNs/view?usp=sharing)  
 
