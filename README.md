@@ -61,3 +61,6 @@ Route categories/popoosdfpo
 
 ## Quête 15 Many to Many  
 [Lien vers la video](https://drive.google.com/file/d/1npoWssFGYYO2kxVI6p1bzALpy8Xo5Ypb/view?usp=sharing)  
+
+## Quête 16 Entity type 
+[Lien vers la video](https://drive.google.com/file/d/1UNmqj-1a0wPZwxFmFqB_lZPsQre9RaFe/view?usp=sharing)  

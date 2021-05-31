@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
+
     /**
      * @Route("/programs", name="program_")
      */
@@ -52,7 +53,7 @@ class ProgramController extends AbstractController
 
         $seasons = $this->getDoctrine()
             ->getRepository(Season::class)
-            ->findAll();
+            ->findBy(['program'=>$program]);
         return $this->render('program/show.html.twig', [
             'program' => $program,
             'seasons'=> $seasons,
