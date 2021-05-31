@@ -55,3 +55,6 @@ Route categories/popoosdfpo
 
 ## Quête 13 CRUD  
 [Lien vers la video](https://drive.google.com/file/d/1kKU0EGxe_6lx2cAn2yTpxHBbA-p5lBZQ/view?usp=sharing)  
+
+## Quête 14 Validator  
+[Lien vers la video](https://drive.google.com/file/d/1yZViEW3T5jLQINyiZj5SMfVI1zpUQFnx/view?usp=sharing)  
