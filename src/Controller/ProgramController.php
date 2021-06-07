@@ -12,7 +12,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 
 
@@ -25,7 +29,7 @@ class ProgramController extends AbstractController
      * @Route("/new", name="new")
      * @return Response
      */
-    public function new(Request $request, Slugify $slugify):Response
+    public function new(Request $request, Slugify $slugify, MailerInterface$mailer):Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class,$program);
@@ -36,6 +40,15 @@ class ProgramController extends AbstractController
             $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
+            $email = (new TemplatedEmail())
+                ->from($this->getParameter('mailer_from'))
+                ->to('olivier.chatelin@gmail.com')
+                ->subject('Nouveauté dans Wild Series')
+                ->htmlTemplate('emails/newProgram.html.twig')
+                ->context([
+                   'program' => $program,
+                ]);
+            $mailer->send($email);
             return $this->redirectToRoute("program_index");
         }
         return $this->render('program/new.html.twig',['form'=>$form->createView()]);

@@ -1,0 +1,6 @@
+{% extends 'components/_emailLayout.html.twig' %}
+{% block content %}
+    <h2>L'épisode {{ episode.number }} de la saison {{ episode.season.number}} de {{ episode.season.program.title}} est arrivée sur WildSeries</h2>
+    <p>titre: <a href=" localhost:8000/episode/{{ episode.slug }}">{{ episode.title }}</a></p>
+    <p>{{ episode.synopsis }}</p>
+{% endblock %}
