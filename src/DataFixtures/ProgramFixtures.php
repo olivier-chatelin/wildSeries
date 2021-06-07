@@ -5,15 +5,22 @@ namespace App\DataFixtures;
 use App\Entity\Actor;
 use App\Entity\Episode;
 use App\Entity\Program;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const PROGRAM_DISPATCH = ['Maggy','Supercopter','Sauvés par le Gong','Parker Lewis ne perd jamais'];
+    public const PROGRAM_DISPATCH = [' Maggy ','Supercopter','Sauvés par le Gong','Parker Lewis ne perd jamais'];
     public const COUNTRY_DISPATCH = ['France','USA','USA','USA'];
     public const CATEGORY_DISPATCH = ['category_5','category_0','category_5','category_5'];
+    private  $slug;
+
+    public function __construct(Slugify $slug)
+    {
+        $this->slug = $slug;
+    }
 
     public function load(ObjectManager $manager)
     {
@@ -25,6 +32,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setCountry(self::COUNTRY_DISPATCH[$i]);
             $program->setYear(2000 + $i);
             $program->setCategory($this->getReference(self::CATEGORY_DISPATCH[$i]));
+            $program->setSlug($this->slug->generate($program->getTitle()));
             $manager->persist($program);
             $this->addReference('program_' . ($i + 1)  , $program);
         }

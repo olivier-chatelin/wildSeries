@@ -6,6 +6,8 @@ use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Form\ProgramType;
+use App\Service\Slugify;
+use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,13 +25,15 @@ class ProgramController extends AbstractController
      * @Route("/new", name="new")
      * @return Response
      */
-    public function new(Request $request):Response
+    public function new(Request $request, Slugify $slugify):Response
     {
         $program = new Program();
         $form = $this->createForm(ProgramType::class,$program);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = $slugify->generate($program->getTitle());
+            $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
             return $this->redirectToRoute("program_index");
@@ -38,8 +42,7 @@ class ProgramController extends AbstractController
 
     }
     /**
-     * @Route("/show/{id<^[0-9]+$>}", name="show")
-     * @param int $id
+     * @Route("/{slug}", name="show")
      * @return Response
      */
     public function show(Program $program):Response
