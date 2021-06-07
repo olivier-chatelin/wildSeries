@@ -64,3 +64,6 @@ Route categories/popoosdfpo
 
 ## Quête 16 Entity type 
 [Lien vers la video](https://drive.google.com/file/d/1UNmqj-1a0wPZwxFmFqB_lZPsQre9RaFe/view?usp=sharing)  
+
+## Quête 17 Fixtures avancées 
+[Lien vers la video](https://drive.google.com/file/d/10UvBVXX5OYZRet96QDApC-qgJ2FoOu6U/view?usp=sharing)  
