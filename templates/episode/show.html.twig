@@ -25,10 +25,29 @@
             </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('episode_index') }}">back to list</a>
-
-    <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
-
+    <p>
+        <a href="{{ path('episode_index') }}">back to list</a>
+    </p>
+    <p>
+        <a href="{{ path('episode_edit', {'slug': episode.slug}) }}">edit</a>
+    </p>
     {{ include('episode/_delete_form.html.twig') }}
+    <p>
+    {% for comment in comments %}
+        <div class="border">
+            <h5>Commentaire laissé par {{ comment.author.firstname }} {{ comment.author.lastname }}</h5>
+            <p>note: {{ comment.rate }}/10</p>
+            <p>commentaire: {{ comment.comment }}</p>
+        </div>
+        {% else %}
+        <p>Pas de commentaire pour l'instant</p>
+    {% endfor %}
+    {% if app.user %}
+        <h3>Laisser un commentaire</h3>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary">ok</button>
+        {{ form_end(form) }}
+    {% endif %}
+    </p>
 {% endblock %}
