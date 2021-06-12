@@ -4,9 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Comment;
 use App\Entity\Episode;
-use App\Entity\User;
 use App\Form\CommentType;
 use App\Form\EpisodeType;
+use App\Repository\CommentRepository;
 use App\Repository\EpisodeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -68,12 +68,25 @@ class EpisodeController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="episode_show", methods={"GET"})
+     * @Route("/{slug}", name="episode_show", methods={"GET","POST"})
      */
-    public function show(Episode $episode): Response
+    public function show(Episode $episode, Request $request, EntityManagerInterface $manager, CommentRepository $repository): Response
     {
+        $comments = $repository->findAll();
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $comment->setEpisode($episode);
+            $comment->setAuthor($this->getUser());
+            $manager->persist($comment);
+            $manager->flush();
+           return $this->redirectToRoute('episode_show',['slug'=>$episode->getSlug()]);
+        }
         return $this->render('episode/show.html.twig', [
             'episode' => $episode,
+            'form' => $form->createView(),
+            'comments' => $comments
         ]);
     }
 

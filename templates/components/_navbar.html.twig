@@ -12,13 +12,18 @@
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="{{ path("program_index") }}">Séries</a>
                 </li>
-            {% if app.user %}
-                <a class="nav-link" href="{{ path('app_logout') }}"> Se déconnecter</a>
-            {% else %}
-                <a class="nav-link" href="{{ path('app_login') }}"> Se connecter</a>
-            {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="{{ path("episode_index") }}">Episodes</a>
+                </li>
+                {% if app.user %}
             </ul>
-                <span class="navbar-text">{{ app.user? app.user.email }}</span>
+            <a class="navbar-text" href="{{ path('app_logout') }}">{{ app.user.email }}</a>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                </li>
+        </ul>
+                {% endif %}
         </div>
     </div>
 </nav>

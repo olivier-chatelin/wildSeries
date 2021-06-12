@@ -46,7 +46,7 @@ class Episode
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="episode")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="episode", orphanRemoval=true)
      */
     private $comments;
 
