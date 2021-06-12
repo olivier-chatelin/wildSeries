@@ -28,11 +28,12 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program = new Program();
             $program->setTitle(self::PROGRAM_DISPATCH[$i]);
             $program->setSummary('Ceci est la description du programme ' . ($i+1));
-            $program->setPoster('https://picsum.photos/200/300');
             $program->setCountry(self::COUNTRY_DISPATCH[$i]);
             $program->setYear(2000 + $i);
             $program->setCategory($this->getReference(self::CATEGORY_DISPATCH[$i]));
             $program->setSlug($this->slug->generate($program->getTitle()));
+            $program->setUpdatedAt(new \DateTime('now'));
+            $program->setPoster('fix' . ($i+1) . '.jpeg');
             $manager->persist($program);
             $this->addReference('program_' . ($i + 1)  , $program);
         }

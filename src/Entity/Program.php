@@ -1,22 +1,24 @@
 <?php
 
 namespace App\Entity;
-
 use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 /**
  * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @Vich\Uploadable
  * @UniqueEntity(
  *     fields={"title"},
  *     errorPath="title",
  *     message="La série existe déjà"
  * )
-
  */
 class Program
 {
@@ -48,10 +50,20 @@ class Program
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-
+     * @var string
      */
     private $poster;
 
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     * @var File
+     */
+    private  $posterFile;
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private  $updatedAt;
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
      * @ORM\JoinColumn(nullable=false)
@@ -82,7 +94,6 @@ class Program
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
-
 
 
     public function __construct()
@@ -236,4 +247,44 @@ class Program
 
         return $this;
     }
+
+    /**
+     * @return File
+     */
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    /**
+     * @param File $posterFile
+     * @return Program
+     */
+    public function setPosterFile(File $poster = null): Program
+    {
+        $this->posterFile = $poster;
+        if ($poster) {
+            $this->updatedAt = new \DateTime('now');
+
+        }
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
 }
