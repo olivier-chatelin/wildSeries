@@ -40,7 +40,28 @@ class UserFixtures extends Fixture
             $user->setRoles(['ROLE_ADMIN']);
             $user->setPassword($this->encoder->encodePassword($user,'123456'));
             $manager->persist($user);
+            $this->addReference('user_' . ($i + 1),$user);
         }
+        $manager->flush();
+
+        $user = new User();
+        $user->setEmail('contributor@gmail.com');
+        $user->setFirstname('Cont');
+        $user->setLastname('Ributor');
+        $user->setRoles(['ROLE_CONTRIBUTOR']);
+        $user->setPassword($this->encoder->encodePassword($user,'123456'));
+        $manager->persist($user);
+        $this->addReference('user_5',$user);
+        $manager->flush();
+
+        $user = new User();
+        $user->setEmail('user@gmail.com');
+        $user->setFirstname('Us');
+        $user->setLastname('Er');
+        $user->setRoles(['ROLE_USER']);
+        $user->setPassword($this->encoder->encodePassword($user,'123456'));
+        $manager->persist($user);
+        $this->addReference('user_6',$user);
         $manager->flush();
     }
 }

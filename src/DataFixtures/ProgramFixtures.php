@@ -34,6 +34,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setSlug($this->slug->generate($program->getTitle()));
             $program->setUpdatedAt(new \DateTime('now'));
             $program->setPoster('fix' . ($i+1) . '.jpeg');
+            $program->setOwner($this->getReference('user_' . ($i+2)));
             $manager->persist($program);
             $this->addReference('program_' . ($i + 1)  , $program);
         }
@@ -44,7 +45,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return [
-          CategoryFixtures::class
+          CategoryFixtures::class,
+            UserFixtures::class
         ];
     }
 }

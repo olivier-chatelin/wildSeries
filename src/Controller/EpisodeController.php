@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Slugify;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGrantedsGrant;
 
 
 /**
@@ -123,28 +124,18 @@ class EpisodeController extends AbstractController
 
         return $this->redirectToRoute('episode_index');
     }
-
     /**
-     * @Route("/{slug}/comment", name="episode_comment", methods={"GET","POST"})
+     * @Route("/{slug}/deleteComment/{comment}", name="episode_comment_delete", methods={"POST"})
      */
-    public function newComment(Episode $episode, EntityManagerInterface $manager, Request $request)
+    public function commentDelete(Request $request, Episode $episode, Comment $comment, EntityManagerInterface $manager): Response
     {
-        $comment = new Comment();
-
-        $form = $this->createForm(CommentType::class,$comment);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $comment->setAuthor($this->getUser());
-            $comment->setEpisode($episode);
-            $manager->persist($comment);
+        if ($this->isCsrfTokenValid('delete'.$comment->getId(), $request->request->get('_token'))) {
+            $manager->remove($comment);
             $manager->flush();
-            return $this->redirectToRoute('episode_show',['slug'=>$episode->getSlug()]);
-
-
         }
-        return $this->render('episode/newComment.html.twig',[
-           'form'=>$form->createView()
-        ]);
+
+        return $this->redirectToRoute('episode_show',['slug'=>$episode->getSlug()]);
     }
+
+
 }
