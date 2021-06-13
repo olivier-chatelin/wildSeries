@@ -86,6 +86,9 @@ Route categories/popoosdfpo
 ## Quête 23 Requêtes pesonnalisées  
 [Lien vers la video](https://drive.google.com/file/d/1bxKPl3bV2iXLt6G1UyGK0AXNhzobYmBU/view?usp=sharing)  
 
+## Quête 24 Sessions et message flash  
+[Lien vers la video](https://drive.google.com/file/d/1aepaGm9SsiFlgq9_lnZa62eH5gK97og6/view?usp=sharing)  
+
 ## Quête 28 Upload  
 [Lien vers la video](https://drive.google.com/file/d/1VyG15Y6L65vXMdu1-xroM6uwp-f61Prp/view?usp=sharing)  
 

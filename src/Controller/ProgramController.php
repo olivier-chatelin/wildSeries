@@ -55,6 +55,7 @@ class ProgramController extends AbstractController
                    'program' => $program,
                 ]);
             $mailer->send($email);
+            $this->addFlash('success','La série a bien été ajoutée');
             return $this->redirectToRoute("program_show", ['slug'=>$program->getSlug()]);
         }
         return $this->render('program/new.html.twig',['form'=>$form->createView()]);
@@ -146,6 +147,7 @@ class ProgramController extends AbstractController
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
             $manager->flush();
+            $this->addFlash('success', 'votre série a bien été modifiée');
             return $this->redirectToRoute('program_index');
         }
         return $this->render('program/edit.html.twig',[

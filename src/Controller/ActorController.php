@@ -29,6 +29,7 @@ class ActorController extends AbstractController
             $actor->setSlug($slug);
             $manager->persist($actor);
             $manager->flush();
+            $this->addFlash('success', 'votre acteur a bien été enregistré');
             return $this->redirectToRoute('actor_show',['slug'=>$actor->getSlug()]);
 
         }

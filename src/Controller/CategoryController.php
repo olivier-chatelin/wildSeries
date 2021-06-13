@@ -35,6 +35,7 @@ class CategoryController extends AbstractController
           $manager = $this->getDoctrine()->getManager();
           $manager->persist($category);
           $manager->flush();
+          $this->addFlash('success', 'Votre catégorie a bien été ajoutée');
             return $this->redirectToRoute('categories_index');
         }
         // Render the form
