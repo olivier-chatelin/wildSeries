@@ -12,7 +12,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const PROGRAM_DISPATCH = [' Maggy ','Supercopter','Sauvés par le Gong','Parker Lewis ne perd jamais'];
+    public const PROGRAM_DISPATCH = ['Maggy','Supercopter','Sauvés par le Gong','Parker Lewis ne perd jamais'];
     public const COUNTRY_DISPATCH = ['France','USA','USA','USA'];
     public const CATEGORY_DISPATCH = ['category_5','category_0','category_5','category_5'];
     private  $slug;
