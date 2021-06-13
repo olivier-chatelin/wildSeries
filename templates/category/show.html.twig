@@ -5,7 +5,7 @@
 {% block body %}
     {% for program in programs %}
         <div>
-            <h2>Série # {{ program.id }} <a href="{{ path('program_show',{'id': program.id}) }} ">{{ program.title }}</a></h2>
+            <h2>Série # {{ program.id }} <a href="{{ path('program_show',{'slug': program.slug}) }} ">{{ program.title }}</a></h2>
             <p>{{ program.summary }}</p>
         </div>
         {% else %}
@@ -14,4 +14,5 @@
     <div>
 
     </div>
+
 {% endblock %}

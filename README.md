@@ -92,6 +92,12 @@ Route categories/popoosdfpo
 ## Quête 25  AJAX
 [Lien vers la video](https://drive.google.com/file/d/1uPorSc9hixH9Zb6oHMWGaCiD1-9-Wuov/view?usp=sharing)    
 
+## Quête 26  I18N
+[Lien vers la video](https://drive.google.com/file/d/1uPorSc9hixH9Zb6oHMWGaCiD1-9-Wuov/view?usp=sharing)    
+
+## Quête 27  Embedding Controllers
+[Lien vers la video](https://drive.google.com/file/d/1zuckKOofRsMtnaxir6sGFsUvs3YnOKJq/view?usp=sharing)    
+
 ## Quête 28 Upload  
 [Lien vers la video](https://drive.google.com/file/d/1VyG15Y6L65vXMdu1-xroM6uwp-f61Prp/view?usp=sharing)  
 
