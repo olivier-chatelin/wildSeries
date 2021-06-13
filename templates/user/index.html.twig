@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+<h1>Bienvenue {{ user.firstname?:user.email }}</h1>
+    <a class="btn btn-primary" href="{{ path('my_profile_edit') }}">Modifier mon profil</a>
+</div>
+<p>Prénom: {{ user.firstname }}</p>
+<p>Nom: {{ user.lastname }}</p>
+{% endblock %}
